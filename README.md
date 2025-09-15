@@ -41,21 +41,6 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
   
   ![snake gif](https://github.com/Scarfacemoignon/Scarfacemoignon/blob/output/github-snake-dark.svg)
 
-  <!-- 🌙 Version sombre classique améliorée -->
-![Snake Animation](https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/snake-classic-dark.svg)
-
-<!-- 💻 Style Matrix (très populaire) -->
-![Snake Matrix](https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/snake-matrix.gif)
-
-<!-- 🌃 Style Cyberpunk (très impressionnant) -->
-![Snake Cyberpunk](https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/snake-cyberpunk.gif)
-
-<!-- ⚡ Style Néon électrique -->
-![Snake Neon](https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/snake-neon.gif)
-
-<!-- 🔥 Style Feu et flammes -->
-![Snake Fire](https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/snake-fire.gif)
 </div>
-  
-![Snake Animation](https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/snake-matrix.gif)
-  
+
+  [![](https://visitcount.itsvg.in/api?id=Scarfacemoignon&icon=0&color=0)](https://github.com/Scarfacemoignon)
