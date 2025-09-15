@@ -16,6 +16,20 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
   💼 <a href="https://www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5" target="_blank"><b>LinkedIn</b></a>
 </p>
 
+---
+## 🔗 Connect with me
+
+<p align="center">
+  <a href="https://dierrytchuendom.com" target="_blank">
+    <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139" />
+  </a>
+  <a href="https://dierrytchuendom.com/blog" target="_blank">
+    <img src="https://img.shields.io/badge/Blog-%23121011.svg?style=for-the-badge&logo=markdown&logoColor=white" />
+  </a>
+  <a href="https://www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+</p>
 
 ---
 # 📊 GitHub Stats:
