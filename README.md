@@ -8,17 +8,15 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
 💼 **LinkedIn** → [Linkedin](https://www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)  
 
 ---
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true) <br>
-![](https://nirzak-streak-stats.vercel.app/?user=Scarfacemoignon&theme=transparent&hide_border=true) 
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact)
-
-
----
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)
 [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:dierrytchuendom@gmail.com) 
 
+---
+# 📊 GitHub Stats:
+![](https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true) <br>
+![](https://nirzak-streak-stats.vercel.app/?user=Scarfacemoignon&theme=transparent&hide_border=true) 
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact)
 
 ---
 # 💻 Tech Stack:
