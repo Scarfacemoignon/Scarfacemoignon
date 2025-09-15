@@ -1,4 +1,3 @@
-# 💫 About Me:
 # 👋 Hello, I'm Dierry!
 Passionné par la **cybersécurité** et en fin de cursus **Master Expert Cybersécurité (2026)**, je construis des labs et des projets pour explorer les menaces, améliorer la détection et renforcer la défense des systèmes d’information.  
 Disponible dès **octobre 2026**, je recherche un CDI en **cybersécurité opérationnelle, SOC, pentest ou réponse aux incidents**.  
@@ -31,7 +30,7 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
 
 ---
 
-  ## 💰 You can help me by Donating
-  [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/paypal.me/dierrynevyltchuendom) 
+  ## 💰 You can buy me coffee 😉  
+  [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/dierrynevyltchuendom) 
 
   
