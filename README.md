@@ -46,6 +46,6 @@ Je partage également mes projets et réflexions sur [Mon Blog](https://dierrytc
 
 <div align="center">
   
-
+[![Profile Views](https://komarev.com/ghpvc/?username=Scarfacemoignon&color=blue&style=flat)](https://github.com/Scarfacemoignon)
 
 </div>
