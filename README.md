@@ -6,16 +6,10 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
 🌍 **Portfolio** → [dierrytchuendom.com](https://dierrytchuendom.com)  
 📝 **Blog** → [My Blog](https://dierrytchuendom.com/blog)  
 💼 **LinkedIn** → [Linkedin](https://www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)  
+🌍 Portfolio: <a href="https://dierrytchuendom.com" target="_blank">dierrytchuendom.com</a> <br>
+📝 Blog: <a href="https://dierrytchuendom.com/blog" target="_blank">My Blog</a> <br>
+💼 LinkedIn: <a href="https://www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5" target="_blank">LinkedIn</a>
 
-
----
-<h2>📫 Connect with me</h2>
-
-<p>
-  🌍 <a href="https://dierrytchuendom.com" target="_blank"><b>Portfolio</b></a> &nbsp;|&nbsp;
-  📝 <a href="https://dierrytchuendom.com/blog" target="_blank"><b>Blog</b></a> &nbsp;|&nbsp;
-  💼 <a href="https://www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5" target="_blank"><b>LinkedIn</b></a>
-</p>
 
 ---
 ## 🔗 Connect with me
