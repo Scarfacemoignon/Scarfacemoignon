@@ -8,7 +8,7 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
 💼 LinkedIn: [Linkedin](www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)
 
 ---
-<h2 align="center">📫 Connect with me</h2>
+<h2">📫 Connect with me</h2>
 
 <p>
   🌍 <a href="https://dierrytchuendom.com" target="_blank"><b>Portfolio</b></a> &nbsp;|&nbsp;
