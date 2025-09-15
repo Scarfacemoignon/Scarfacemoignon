@@ -8,6 +8,16 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
 💼 LinkedIn: [Linkedin](www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)
 
 ---
+<h2 align="center">🔗 Connect with me</h2>
+
+<p align="center">
+  🌍 <a href="https://dierrytchuendom.com" target="_blank"><b>Portfolio</b></a> &nbsp;|&nbsp;
+  📝 <a href="https://dierrytchuendom.com/blog" target="_blank"><b>Blog</b></a> &nbsp;|&nbsp;
+  💼 <a href="https://www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5" target="_blank"><b>LinkedIn</b></a>
+</p>
+
+
+---
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true) <br>
 ![](https://nirzak-streak-stats.vercel.app/?user=Scarfacemoignon&theme=transparent&hide_border=true) 
