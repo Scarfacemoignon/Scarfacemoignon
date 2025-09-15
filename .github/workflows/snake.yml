@@ -1,14 +1,12 @@
 name: 🐍 GitHub Snake Game - Premium Edition
 
 on:
-  # 🕐 Exécution automatique multiple pour une fraîcheur maximale
   schedule:
-    - cron: "0 0 * * *"    # Minuit UTC - Mise à jour quotidienne
-    - cron: "0 6 * * *"    # 6h UTC - Mise à jour matinale
-    - cron: "0 12 * * *"   # Midi UTC - Mise à jour de mi-journée
-    - cron: "0 18 * * *"   # 18h UTC - Mise à jour soirée
-  
-  # 🎯 Déclenchement manuel pour tests et mises à jour immédiates
+    - cron: "0 0 * * *"
+    - cron: "0 6 * * *"
+    - cron: "0 12 * * *"
+    - cron: "0 18 * * *"
+
   workflow_dispatch:
     inputs:
       force_update:
@@ -21,8 +19,7 @@ on:
         required: false
         default: ""
         type: string
-  
-  # 🚀 Déclenchement sur push pour updates immédiates
+
   push:
     branches:
       - main
@@ -31,36 +28,31 @@ on:
       - ".github/workflows/**"
       - "README.md"
 
-# 🛡️ Permissions sécurisées et optimisées
 permissions:
   contents: write
   pages: write
   id-token: write
   actions: read
 
-# 🌍 Variables d'environnement globales
 env:
   FORCE_COLOR: 3
   TERM: xterm-256color
 
 jobs:
-  # 🎨 Job principal de génération des animations
   generate-snake-animations:
     name: 🐍 Générer les Animations Snake
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    
-    # 🏷️ Stratégie de concurrence pour éviter les conflits
+
     concurrency:
       group: snake-generation-${{ github.ref }}
       cancel-in-progress: true
-    
+
     outputs:
-      animation-generated: ${{ steps.snake-generation.outputs.generated }}
-      commit-hash: ${{ steps.snake-generation.outputs.commit_hash }}
-    
+      animation-generated: ${{ steps.check-files.outputs.generated }}
+      commit-hash: ${{ steps.check-files.outputs.commit_hash }}
+
     steps:
-      # 📋 Informations de debug élégantes
       - name: 📊 Informations du Workflow
         run: |
           echo "🎯 Repository: ${{ github.repository }}"
@@ -68,15 +60,13 @@ jobs:
           echo "🌿 Branche: ${{ github.ref_name }}"
           echo "🚀 Événement: ${{ github.event_name }}"
           echo "⏰ Heure: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-      
-      # 📥 Récupération du repository avec cache optimisé
+
       - name: 📥 Récupération du Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
           token: ${{ secrets.GITHUB_TOKEN }}
-      
-      # 🎨 Génération des animations snake premium
+
       - name: 🐍 Génération Snake Premium
         id: snake-generation
         uses: Platane/snk@v3
@@ -96,9 +86,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
-      
-      # 📊 Vérification des fichiers générés
+
       - name: 📊 Vérification des Animations
+        id: check-files
         run: |
           echo "🎨 Animations générées:"
           ls -la dist/ || echo "❌ Aucun fichier généré"
@@ -116,16 +106,13 @@ jobs:
             echo "❌ Aucune animation générée"
             echo "generated=false" >> $GITHUB_OUTPUT
           fi
-      
-      # 🔧 Optimisation des fichiers
+          
       - name: 🔧 Optimisation des Animations
-        if: steps.snake-generation.outputs.generated == 'true'
+        if: steps.check-files.outputs.generated == 'true'
         run: |
           echo "🔧 Optimisation en cours..."
-          # Installation d'outils d'optimisation
           sudo apt-get update && sudo apt-get install -y optipng gifsicle
           
-          # Optimisation des SVG (si disponible)
           for svg in dist/*.svg; do
             if [ -f "$svg" ]; then
               original_size=$(stat -f%z "$svg" 2>/dev/null || stat -c%s "$svg")
@@ -133,7 +120,6 @@ jobs:
             fi
           done
           
-          # Optimisation des GIF
           for gif in dist/*.gif; do
             if [ -f "$gif" ]; then
               original_size=$(stat -f%z "$gif" 2>/dev/null || stat -c%s "$gif")
@@ -144,10 +130,9 @@ jobs:
           done
           
           echo "✨ Optimisation terminée!"
-      
-      # 📄 Génération d'un fichier README pour les animations
+          
       - name: 📄 Génération Documentation Animations
-        if: steps.snake-generation.outputs.generated == 'true'
+        if: steps.check-files.outputs.generated == 'true'
         run: |
           cat > dist/README.md << 'EOF'
           # 🐍 GitHub Snake Animations Collection
@@ -187,10 +172,9 @@ jobs:
           ⚡ **Généré par**: [GitHub Actions](https://github.com/${{ github.repository }}/actions)  
           🐍 **Powered by**: [Platane/snk](https://github.com/Platane/snk)
           EOF
-      
-      # 🚀 Déploiement optimisé vers la branche output
+          
       - name: 🚀 Déploiement Premium
-        if: steps.snake-generation.outputs.generated == 'true'
+        if: steps.check-files.outputs.generated == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -220,8 +204,7 @@ jobs:
             [skip ci]
           user_name: 'Snake Bot 🐍'
           user_email: 'snake-bot@github-actions.noreply.com'
-      
-      # 🎉 Notification de succès
+
       - name: 🎉 Notification de Succès
         if: success()
         run: |
@@ -233,24 +216,21 @@ jobs:
           echo "⏱️  Prochaine exécution programmée dans 6 heures"
           echo "=============================================== 🎊"
 
-  # 📊 Job de validation et tests
   validate-animations:
     name: 🔍 Validation des Animations
     needs: generate-snake-animations
     if: needs.generate-snake-animations.outputs.animation-generated == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    
+
     steps:
       - name: 🔍 Validation des URLs
         run: |
           echo "🔍 Validation des animations générées..."
           
-          # Vérification de l'existence de la branche output
           if git ls-remote --heads origin output | grep -q output; then
             echo "✅ Branche 'output' existe"
             
-            # Liste des animations à vérifier
             animations=(
               "snake-classic.svg"
               "snake-classic-dark.svg"
@@ -291,17 +271,11 @@ jobs:
           fi
           
           echo "🎯 Validation terminée!"
-      
-      # 🏷️ Création de tags de version
+          
       - name: 🏷️ Tag de Version
         if: github.event_name == 'push'
         run: |
-          # Création d'un tag basé sur la date
           tag_name="snake-$(date -u '+%Y.%m.%d-%H%M')"
           echo "🏷️ Création du tag: $tag_name"
-          
-          # Note: En production, vous devriez utiliser un token avec plus de permissions
-          # git tag "$tag_name"
-          # git push origin "$tag_name"
           
           echo "📋 Tag suggéré: $tag_name"
