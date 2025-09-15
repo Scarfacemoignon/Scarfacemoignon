@@ -33,4 +33,11 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
   ## 💰 You can buy me coffee 😉  
   [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/dierrynevyltchuendom) 
 
+
+---
+
+<div align="center">
+    
+  ![snake gif](https://github.com/TechnologyHell/TechnologyHell/blob/output/github-snake-dark.svg)
+</div>
   
