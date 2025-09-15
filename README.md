@@ -17,9 +17,9 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
 
 ---
 # 📊 GitHub Stats:
-&nbsp;&nbsp;&nbsp; ![](https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true) <br>
 ![](https://nirzak-streak-stats.vercel.app/?user=Scarfacemoignon&theme=transparent&hide_border=true) 
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact)
+&nbsp;&nbsp;&nbsp; ![](https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact)
 
 
 ---
