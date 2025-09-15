@@ -190,7 +190,7 @@ jobs:
       
       # 🚀 Déploiement optimisé vers la branche output
       - name: 🚀 Déploiement Premium
-        if: steps.snake-generation.outputs.generated == 'true'
+        if: steps.check-files.outputs.generated == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
