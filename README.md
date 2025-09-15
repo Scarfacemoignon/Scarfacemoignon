@@ -4,14 +4,15 @@ Passionné par la **cybersécurité** et en fin de cursus **Master Expert Cybers
 Disponible dès **octobre 2026**, je recherche un CDI en **cybersécurité opérationnelle, SOC, pentest ou réponse aux incidents**.  
 Je partage également mes projets et réflexions sur mon blog 🚀. 
 # 📫 Connect with me
-🌍 Portfolio: [dierrytchuendom.com](https://dierrytchuendom.com)
-📝 Blog: [My Blog](https://dierrytchuendom.com/blog)
+🌍 Portfolio: [dierrytchuendom.com](https://dierrytchuendom.com) <br>
+📝 Blog: [My Blog](https://dierrytchuendom.com/blog)<br>
 💼 LinkedIn: [Linkedin](www.linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)
 
 
 ---
 ## 🌐 Socials:
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:dierrytchuendom@gmail.com) 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)
+[![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:dierrytchuendom@gmail.com) 
 
 
 ---
