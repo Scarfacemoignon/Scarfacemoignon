@@ -3,7 +3,7 @@ name: GitHub Snake Game
 on:
   # Schedule the workflow to run daily at midnight UTC
   schedule:
-    - cron: "0 0 * * *"  # Corrigé: 5 éléments requis (minute heure jour mois jour_semaine)
+    - cron: "0 0 * * *"
   # Allow manual triggering of the workflow
   workflow_dispatch:
   # Trigger the workflow on pushes to the main branch
@@ -24,10 +24,12 @@ jobs:
     
     steps:
       # Step 1: Checkout the repository
+      # Mise à jour vers la version 4 de l'action actions/checkout pour les dernières fonctionnalités et correctifs.
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       # Step 2: Generate the snake animations
+      # La version 3 de Platane/snk est toujours la plus récente et fonctionnelle.
       - name: Generate GitHub Contributions Snake Animations
         uses: Platane/snk@v3
         with:
@@ -42,8 +44,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       
       # Step 3: Deploy the generated files to the 'output' branch
+      # Mise à jour vers la version 4 de l'action peaceiris/actions-gh-pages pour les dernières fonctionnalités et correctifs.
       - name: Deploy to Output Branch
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
