@@ -4,6 +4,7 @@
   <img src="https://nirzak-streak-stats.vercel.app/?user=Scarfacemoignon&theme=transparent&hide_border=true" width="50%" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact" width="36%" /> </br>
 </div>
+
 ---
 # 👋 Hello, I'm Dierry!
 Passionné par la **cybersécurité** et en fin de cursus **Master Expert Cybersécurité (2026)**, je construis des labs et des projets pour explorer les menaces, améliorer la détection et renforcer la défense des systèmes d’information.  
