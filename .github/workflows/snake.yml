@@ -1,298 +1,52 @@
-name: 🐍 GitHub Snake Game - Premium Edition
+name: GitHub Snake Game
 
 on:
-  # 🕐 Multiple automated runs for maximum freshness
+  # Schedule the workflow to run daily at midnight UTC
   schedule:
-    - cron: "0 0 * * *"    # Midnight UTC - Daily update
-    - cron: "0 6 * * *"    # 6h UTC - Morning update
-    - cron: "0 12 * * *"   # Noon UTC - Mid-day update
-    - cron: "0 18 * * *"   # 18h UTC - Evening update
-  
-  # 🎯 Manual trigger for tests and immediate updates
+    - cron: "0 0 * * *"  # Corrigé: 5 éléments requis (minute heure jour mois jour_semaine)
+  # Allow manual triggering of the workflow
   workflow_dispatch:
-    inputs:
-      force_update:
-        description: "🔄 Force a complete update"
-        required: false
-        default: false
-        type: boolean
-      custom_colors:
-        description: "🎨 Custom colors (format: snake_color,dot_colors)"
-        required: false
-        default: ""
-        type: string
-  
-  # 🚀 Trigger on push for immediate updates
+  # Trigger the workflow on pushes to the main branch
   push:
     branches:
       - main
-      - master
-    paths:
-      - ".github/workflows/**"
-      - "README.md"
 
-# 🛡️ Secure and optimized permissions
+# Permissions requises pour l'action
 permissions:
   contents: write
   pages: write
   id-token: write
-  actions: read
-
-# 🌍 Global environment variables
-env:
-  FORCE_COLOR: 3
-  TERM: xterm-256color
 
 jobs:
-  # 🎨 Main job to generate animations
-  generate-snake-animations:
-    name: 🐍 Generate Snake Animations
+  generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    
-    # 🏷️ Concurrency strategy to avoid conflicts
-    concurrency:
-      group: snake-generation-${{ github.ref }}
-      cancel-in-progress: true
-    
-    outputs:
-      animation-generated: ${{ steps.check-files.outputs.generated }}
-      commit-hash: ${{ steps.check-files.outputs.commit_hash }}
+    timeout-minutes: 10
     
     steps:
-      # 📋 Elegant debug info
-      - name: 📊 Workflow Information
-        run: |
-          echo "🎯 Repository: ${{ github.repository }}"
-          echo "👤 User: ${{ github.repository_owner }}"
-          echo "🌿 Branch: ${{ github.ref_name }}"
-          echo "🚀 Event: ${{ github.event_name }}"
-          echo "⏰ Time: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
       
-      # 📥 Repository checkout with optimized cache
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      # 🎨 Premium snake animation generation
-      - name: 🐍 Premium Snake Generation
-        id: snake-generation
+      # Step 2: Generate the snake animations
+      - name: Generate GitHub Contributions Snake Animations
         uses: Platane/snk@v3
         with:
+          # GitHub username to generate the animation for
           github_user_name: ${{ github.repository_owner }}
+          # Define the output files and their configurations
           outputs: |
-            dist/snake-classic.svg
-            dist/snake-classic-dark.svg?palette=github-dark
-            dist/snake-ocean.svg?palette=github
-            dist/snake-neon.gif?color_snake=#00ff41&color_dots=#ff6b6b,#4ecdc4,#45b7d1,#96ceb4,#ffeaa7
-            dist/snake-matrix.gif?color_snake=#00ff41&color_dots=#003d00,#006600,#009900,#00cc00,#00ff00
-            dist/snake-cyberpunk.gif?color_snake=#ff0080&color_dots=#00ffff,#ff00ff,#ffff00,#ff8000,#8000ff
-            dist/snake-sunset.gif?color_snake=#ff6b35&color_dots=#f7931e,#ffd23f,#06ffa5,#0066cc,#4a00e0
-            dist/snake-ocean-deep.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
-            dist/snake-fire.gif?color_snake=#ff4757&color_dots=#ff6348,#ff7675,#fd79a8,#fdcb6e,#e17055
-            dist/snake-forest.gif?color_snake=#00b894&color_dots=#00cec9,#55a3ff,#74b9ff,#0984e3,#6c5ce7
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+          # Utilisez directement le paramètre github_token au lieu d'env
           github_token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          NODE_OPTIONS: "--max-old-space-size=4096"
       
-      # 📊 Check generated files
-      - name: 📊 Verify Animations
-        id: check-files
-        run: |
-          echo "🎨 Animations generated:"
-          ls -la dist/ || echo "❌ No files generated"
-          
-          if [ -d "dist" ] && [ "$(ls -A dist/)" ]; then
-            echo "✅ Generation successful!"
-            echo "📁 Files created:"
-            for file in dist/*; do
-              size=$(du -h "$file" | cut -f1)
-              echo "  📄 $(basename "$file") - $size"
-            done
-            echo "generated=true" >> $GITHUB_OUTPUT
-            echo "commit_hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-          else
-            echo "❌ No animations generated"
-            echo "generated=false" >> $GITHUB_OUTPUT
-          fi
-      
-      # 🔧 Optimize files
-      - name: 🔧 Optimize Animations
-        if: steps.check-files.outputs.generated == 'true'
-        run: |
-          echo "🔧 Optimization in progress..."
-          sudo apt-get update && sudo apt-get install -y optipng gifsicle
-          
-          for svg in dist/*.svg; do
-            if [ -f "$svg" ]; then
-              original_size=$(stat -f%z "$svg" 2>/dev/null || stat -c%s "$svg")
-              echo "📄 Optimizing $(basename "$svg") (${original_size} bytes)"
-            fi
-          done
-          
-          for gif in dist/*.gif; do
-            if [ -f "$gif" ]; then
-              original_size=$(stat -f%z "$gif" 2>/dev/null || stat -c%s "$gif")
-              gifsicle -O3 "$gif" -o "${gif}.tmp" && mv "${gif}.tmp" "$gif"
-              new_size=$(stat -f%z "$gif" 2>/dev/null || stat -c%s "$gif")
-              echo "🎯 $(basename "$gif"): ${original_size} → ${new_size} bytes"
-            fi
-          done
-          
-          echo "✨ Optimization complete!"
-      
-      # 📄 Generate a README file for animations
-      - name: 📄 Generate Animations Documentation
-        if: steps.check-files.outputs.generated == 'true'
-        run: |
-          cat > dist/README.md << 'EOF'
-          # 🐍 GitHub Snake Animations Collection
-          
-          > Animations generated automatically on $(date -u '+%Y-%m-%d at %H:%M:%S UTC')
-          
-          ## 🎨 Premium Collection
-          
-          ### 📱 Available Formats
-          
-          | Animation | Description | Style |
-          |-----------|-------------|-------|
-          | `snake-classic.svg` | 🌅 Classic light version | Day |
-          | `snake-classic-dark.svg` | 🌙 Classic dark version | Night |
-          | `snake-ocean.svg` | 🌊 Standard ocean theme | Day |
-          | `snake-neon.gif` | ⚡ Electric neon style | Animated |
-          | `snake-matrix.gif` | 💻 Matrix green style | Animated |
-          | `snake-cyberpunk.gif` | 🌃 Cyberpunk style | Animated |
-          | `snake-sunset.gif` | 🌅 Sunset colors | Animated |
-          | `snake-ocean-deep.gif` | 🏖️ Deep ocean | Animated |
-          | `snake-fire.gif` | 🔥 Fire and flames theme | Animated |
-          | `snake-forest.gif` | 🌲 Natural forest theme | Animated |
-          
-          ## 📋 Usage
-          
-          ```markdown
-          ![Snake Animation](https://raw.githubusercontent.com/${{ github.repository }}/output/snake-classic.svg)
-          ```
-          
-          ## 🔄 Update
-          - **Automatic**: 4 times a day (0h, 6h, 12h, 18h UTC)
-          - **Manual**: Via GitHub Actions
-          - **Push**: On workflow modification
-          
-          ---
-          
-          ⚡ **Generated by**: [GitHub Actions](https://github.com/${{ github.repository }}/actions)  
-          🐍 **Powered by**: [Platane/snk](https://github.com/Platane/snk)
-          EOF
-      
-      # 🚀 Optimized deployment to the output branch
-      - name: 🚀 Premium Deployment
-        if: steps.check-files.outputs.generated == 'true'
+      # Step 3: Deploy the generated files to the 'output' branch
+      - name: Deploy to Output Branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: output
-          force_orphan: true
-          commit_message: |
-            🐍 Update premium snake animations
-            
-            🎨 New animations generated
-            📅 Date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
-            🔗 Commit: ${{ github.sha }}
-            👤 Author: ${{ github.actor }}
-            🚀 Workflow: ${{ github.workflow }}
-            
-            ✨ Animations available:
-            - Snake Classic (light/dark SVG)
-            - Snake Ocean (standard SVG)
-            - Snake Neon (animated GIF)
-            - Snake Matrix (green GIF)
-            - Snake Cyberpunk (colorful GIF)
-            - Snake Sunset (sunset GIF)
-            - Snake Ocean Deep (blue GIF)
-            - Snake Fire (red/orange GIF)
-            - Snake Forest (natural green GIF)
-            
-            [skip ci]
-          user_name: 'Snake Bot 🐍'
-          user_email: 'snake-bot@github-actions.noreply.com'
-
-      # 🎉 Success notification
-      - name: 🎉 Success Notification
-        if: success()
-        run: |
-          echo "🎊 ==============================================="
-          echo "🐍 SNAKE GENERATION COMPLETED SUCCESSFULLY!"
-          echo "🎨 All animations have been generated"
-          echo "🚀 Deployment to 'output' branch completed"
-          echo "🌐 Accessible via: https://raw.githubusercontent.com/${{ github.repository }}/output/"
-          echo "⏱️  Next run scheduled in 6 hours"
-          echo "=============================================== 🎊"
-
-  # 📊 Validation and testing job
-  validate-animations:
-    name: 🔍 Validate Animations
-    needs: generate-snake-animations
-    if: needs.generate-snake-animations.outputs.animation-generated == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: 🔍 Validate URLs
-        run: |
-          echo "🔍 Validating generated animations..."
-          
-          if git ls-remote --heads origin output | grep -q output; then
-            echo "✅ 'output' branch exists"
-            
-            animations=(
-              "snake-classic.svg"
-              "snake-classic-dark.svg"
-              "snake-ocean.svg"
-              "snake-neon.gif"
-              "snake-matrix.gif"
-              "snake-cyberpunk.gif"
-              "snake-sunset.gif"
-              "snake-ocean-deep.gif"
-              "snake-fire.gif"
-              "snake-forest.gif"
-            )
-            
-            base_url="https://raw.githubusercontent.com/${{ github.repository }}/output"
-            success_count=0
-            
-            echo "🌐 Checking accessibility..."
-            for animation in "${animations[@]}"; do
-              url="$base_url/$animation"
-              if curl -s --head "$url" | head -n 1 | grep -q "200 OK"; then
-                echo "✅ $animation - Accessible"
-                ((success_count++))
-              else
-                echo "⚠️  $animation - Waiting for sync"
-              fi
-            done
-            
-            echo "📊 Results: $success_count/10 animations accessible"
-            
-            if [ $success_count -gt 0 ]; then
-              echo "🎉 At least one animation is available!"
-            else
-              echo "⏳ Animations are synchronizing..."
-            fi
-          else
-            echo "⚠️  'output' branch does not exist yet"
-            echo "🔄 It will be created on the first successful deployment"
-          fi
-          
-          echo "🎯 Validation complete!"
-      
-      # 🏷️ Create version tags
-      - name: 🏷️ Version Tag
-        if: github.event_name == 'push'
-        run: |
-          tag_name="snake-$(date -u '+%Y.%m.%d-%H%M')"
-          echo "🏷️ Creating tag: $tag_name"
-          
-          echo "📋 Suggested tag: $tag_name"
+          # Optionally, you can set a custom commit message
+          commit_message: "Update snake animation [skip ci]"
