@@ -1,3 +1,9 @@
+# 📊 GitHub Stats:
+![](https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true) <br>
+![](https://nirzak-streak-stats.vercel.app/?user=Scarfacemoignon&theme=transparent&hide_border=true) 
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact)
+
+---
 # 👋 Hello, I'm Dierry!
 Passionné par la **cybersécurité** et en fin de cursus **Master Expert Cybersécurité (2026)**, je construis des labs et des projets pour explorer les menaces, améliorer la détection et renforcer la défense des systèmes d’information.  
 Disponible dès **octobre 2026**, je recherche un CDI en **cybersécurité opérationnelle, SOC, pentest ou réponse aux incidents**.  
@@ -11,12 +17,6 @@ Je partage également mes projets et réflexions sur mon blog 🚀.
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/dierry-nevyl-tchuendom-b5382b1b5)
 [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:dierrytchuendom@gmail.com) 
-
----
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true) <br>
-![](https://nirzak-streak-stats.vercel.app/?user=Scarfacemoignon&theme=transparent&hide_border=true) 
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact)
 
 ---
 # 💻 Tech Stack:
