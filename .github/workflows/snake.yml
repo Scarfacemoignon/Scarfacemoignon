@@ -246,31 +246,49 @@ jobs:
         run: |
           echo "🔍 Validation des animations générées..."
           
-          # Liste des animations à vérifier
-          animations=(
-            "snake-classic.svg"
-            "snake-classic-dark.svg"
-            "snake-ocean.svg"
-            "snake-neon.gif"
-            "snake-matrix.gif"
-            "snake-cyberpunk.gif"
-            "snake-sunset.gif"
-            "snake-ocean-deep.gif"
-            "snake-fire.gif"
-            "snake-forest.gif"
-          )
-          
-          base_url="https://raw.githubusercontent.com/${{ github.repository }}/output"
-          
-          echo "🌐 Vérification de l'accessibilité..."
-          for animation in "${animations[@]}"; do
-            url="$base_url/$animation"
-            if curl -s --head "$url" | head -n 1 | grep -q "200 OK"; then
-              echo "✅ $animation - Accessible"
+          # Vérification de l'existence de la branche output
+          if git ls-remote --heads origin output | grep -q output; then
+            echo "✅ Branche 'output' existe"
+            
+            # Liste des animations à vérifier
+            animations=(
+              "snake-classic.svg"
+              "snake-classic-dark.svg"
+              "snake-ocean.svg"
+              "snake-neon.gif"
+              "snake-matrix.gif"
+              "snake-cyberpunk.gif"
+              "snake-sunset.gif"
+              "snake-ocean-deep.gif"
+              "snake-fire.gif"
+              "snake-forest.gif"
+            )
+            
+            base_url="https://raw.githubusercontent.com/${{ github.repository }}/output"
+            success_count=0
+            
+            echo "🌐 Vérification de l'accessibilité..."
+            for animation in "${animations[@]}"; do
+              url="$base_url/$animation"
+              if curl -s --head "$url" | head -n 1 | grep -q "200 OK"; then
+                echo "✅ $animation - Accessible"
+                ((success_count++))
+              else
+                echo "⚠️  $animation - En attente de synchronisation"
+              fi
+            done
+            
+            echo "📊 Résultats: $success_count/10 animations accessibles"
+            
+            if [ $success_count -gt 0 ]; then
+              echo "🎉 Au moins une animation est disponible !"
             else
-              echo "⚠️  $animation - En attente de synchronisation"
+              echo "⏳ Animations en cours de synchronisation..."
             fi
-          done
+          else
+            echo "⚠️  Branche 'output' n'existe pas encore"
+            echo "🔄 Elle sera créée lors du premier déploiement réussi"
+          fi
           
           echo "🎯 Validation terminée!"
       
