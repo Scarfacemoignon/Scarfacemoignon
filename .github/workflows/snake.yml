@@ -1,1 +1,59 @@
 
+name: GitHub Snake Game
+
+on:
+  # Exécution quotidienne à minuit UTC pour maintenir l'animation à jour
+  schedule:
+    - cron: "0 0 * * *"
+
+  # Permet de lancer le workflow manuellement depuis l'interface GitHub
+  workflow_dispatch:
+
+  # Se déclenche sur un push vers la branche principale pour tester les changements
+  push:
+    branches:
+      - main
+
+# Évite que deux exécutions se chevauchent (ex: un push pendant le run planifié)
+concurrency:
+  group: snake-animation
+  cancel-in-progress: true
+
+permissions:
+  # Nécessaire pour que l'action de déploiement puisse pousser sur la branche "output"
+  contents: write
+
+jobs:
+  generate:
+    name: Generate and Deploy Snake Animation
+    runs-on: ubuntu-latest
+    # Définir un temps d'attente maximum pour éviter que le job ne tourne indéfiniment
+    timeout-minutes: 10
+
+    steps:
+      # Étape 1 : Cloner le dépôt
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Étape 2 : Générer les animations du serpent
+      - name: Generate GitHub Contributions Snake Animations
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+        env:
+          # Le token doit être passé en variable d'environnement, pas en "with"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Étape 3 : Déployer les fichiers générés sur la branche de sortie
+      - name: Deploy to Output Branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: output
+          # [skip ci] pour éviter que ce commit ne redéclenche le workflow
+          commit_message: "Update snake animation [skip ci]"
