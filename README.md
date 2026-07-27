@@ -34,11 +34,7 @@ Je partage également mes projets et réflexions sur [Mon Blog](https://dierrytc
 
 ---
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/github-snake.svg" />
-  <img alt="snake game" src="https://raw.githubusercontent.com/Scarfacemoignon/Scarfacemoignon/output/github-snake.svg" />
-</picture>
+
 
 ---
 
