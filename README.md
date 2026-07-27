@@ -13,9 +13,8 @@ Je partage également mes projets et réflexions sur [Mon Blog](https://dierrytc
 </div>
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&show_icons=true" width="55%" /><br>
-
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&layout=compact" width="36%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true" width="49%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Scarfacemoignon&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact" width="45%" />
 </div>
 
 ---
