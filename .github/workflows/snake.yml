@@ -1,62 +1,27 @@
-# Nom du workflow
-name: GitHub Snake Game
+name: generate snake
 
-# Événements déclencheurs
 on:
-  # Exécution quotidienne à minuit UTC pour maintenir l'animation à jour
   schedule:
-    - cron: "0 0 * * *"
-  # Permet de lancer le workflow manuellement depuis l'interface GitHub
-  workflow_dispatch:
-  # Se déclenche sur un push vers la branche principale pour tester les changements
+    - cron: "0 */24 * * *"
+  workflow_dispatch: {}
   push:
-    branches:
-      - main
+    branches: [main]
 
-# Définition des autorisations
-permissions:
-  contents: write
-  # Nécessaire pour publier sur les pages GitHub
-  pages: write
-
-# Jobs à exécuter
 jobs:
-  # Job principal pour générer l'animation
   generate:
-    # Exécuter le job sur un runner Ubuntu
     runs-on: ubuntu-latest
-    # Définir un temps d'attente maximum pour éviter que le job ne tourne indéfiniment
-    timeout-minutes: 10
-    
-    # Étapes du job
     steps:
-      # Étape 1 : Cloner le dépôt
-      # Utilisation de la dernière version (v4) pour une meilleure sécurité et des performances optimisées
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      
-      # Étape 2 : Générer les animations du serpent
-      # Utilisation de la version v3 de l'action Platane/snk
-      - name: Generate GitHub Contributions Snake Animations
-        uses: Platane/snk@v3
+      - uses: Platane/snk@v3
+        id: snake-gif
         with:
-          # Utilisation d'une variable d'environnement pour une meilleure pratique
-          github_user_name: ${{ github.repository_owner }}
-          # Définition des fichiers de sortie et de leurs options de palette
+          github_user_name: Scarfacemoignon
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
-          # Utilisation du jeton GitHub pour l'authentification
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-            
-      # Étape 3 : Déployer les fichiers générés sur la branche de sortie
-      # Utilisation de la dernière version (v4) de l'action peaceiris/actions-gh-pages
-      - name: Deploy to Output Branch
-        uses: peaceiris/actions-gh-pages@v4
+
+      - uses: crazy-max/ghaction-github-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: output
-          # Message de commit personnalisé avec [skip ci] pour éviter une nouvelle exécution du workflow
-          commit_message: "Update snake animation [skip ci]"
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
